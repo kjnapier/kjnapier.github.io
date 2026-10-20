@@ -57,7 +57,7 @@ a { color: var(--link); text-underline-offset: 3px; font-weight: 600; }
 .todo { background: var(--todo); color: var(--todo-ink); border-radius: 3px; padding: 0 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 
 /* Hero: the garden */
-.hero { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--space) 0%, var(--space-2) 70%, #1d2a5c 100%); }
+.hero { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--space) 0%, var(--space-2) 75%, #0d1433 100%); }
 .hero-inner { position: relative; z-index: 2; max-width: 980px; margin: 0 auto; padding-block: 56px 190px; display: grid; gap: 12px; }
 .readout { font: 600 0.74rem/1 var(--display); letter-spacing: 0.18em; text-transform: uppercase; color: var(--hud); display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 6px; }
 .readout span::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--hud); margin-right: 8px; vertical-align: 1px; }
@@ -122,7 +122,6 @@ a { color: var(--link); text-underline-offset: 3px; font-weight: 600; }
 /* Phone layout for the hero scene: bring the ship into the narrow visible strip */
 @media (max-width: 640px) {
   .shipwrap { transform: translate(545px, 318px) rotate(-12deg) scale(.6); }
-  .launch-trail { display: none; }
   .hero-inner { padding-block-end: 280px; }
 }
 
@@ -271,10 +270,11 @@ footer { text-align: center; font: 600 0.72rem/1.6 var(--display); letter-spacin
     <defs>
       <radialGradient id="neb1"><stop offset="0" stop-color="#6b4bc9" stop-opacity=".45"/><stop offset="1" stop-color="#6b4bc9" stop-opacity="0"/></radialGradient>
       <radialGradient id="neb2"><stop offset="0" stop-color="#2fb3c9" stop-opacity=".3"/><stop offset="1" stop-color="#2fb3c9" stop-opacity="0"/></radialGradient>
-      <radialGradient id="world" cx=".42" cy=".08" r=".7"><stop offset="0" stop-color="#7fd06a"/><stop offset=".35" stop-color="#3f9a55"/><stop offset="1" stop-color="#12382c"/></radialGradient>
+      <radialGradient id="world" cx=".32" cy=".3" r=".75"><stop offset="0" stop-color="#9fd8ff"/><stop offset=".45" stop-color="#3a86c8"/><stop offset="1" stop-color="#0f2a52"/></radialGradient>
+      <radialGradient id="worldglow"><stop offset=".55" stop-color="#7fc8ff" stop-opacity=".35"/><stop offset="1" stop-color="#7fc8ff" stop-opacity="0"/></radialGradient>
       <radialGradient id="ringed" cx=".35" cy=".35"><stop offset="0" stop-color="#f3c98a"/><stop offset="1" stop-color="#a8683a"/></radialGradient>
       <radialGradient id="moon" cx=".35" cy=".35"><stop offset="0" stop-color="#e6e8f2"/><stop offset="1" stop-color="#8a8fa6"/></radialGradient>
-      <clipPath id="worldclip"><circle cx="600" cy="1360" r="960"/></clipPath>
+      <clipPath id="worldclip"><circle r="11"/></clipPath>
     </defs>
     <ellipse cx="260" cy="140" rx="380" ry="200" fill="url(#neb1)"/>
     <ellipse cx="980" cy="260" rx="360" ry="180" fill="url(#neb2)"/>
@@ -292,24 +292,16 @@ footer { text-align: center; font: 600 0.72rem/1.6 var(--display); letter-spacin
         <path d="M-70 0 A70 15.2 0 0 0 70 0" style="stroke-width:2.5;opacity:.7"/>
       </g>
     </g>
-    <!-- moon -->
-    <g transform="translate(150 230)">
-      <circle r="18" fill="url(#moon)"/>
-      <circle cx="-5" cy="-4" r="4" style="fill:#7d8299;opacity:.5"/><circle cx="6" cy="6" r="3" style="fill:#7d8299;opacity:.5"/>
+    <!-- distant home planet and its moon -->
+    <g transform="translate(1000 330)">
+      <circle r="22" fill="url(#worldglow)"/>
+      <circle r="11" fill="url(#world)"/>
+      <g clip-path="url(#worldclip)" style="fill:#5fae6a;opacity:.85">
+        <path d="M-9 -3 C-5 -7 0 -5 1 -1 C2 3 -4 4 -9 1Z"/>
+        <path d="M3 3 C6 1 10 3 10 6 C7 9 3 8 3 3Z"/>
+      </g>
+      <circle cx="21" cy="-9" r="2.6" fill="url(#moon)"/>
     </g>
-
-    <!-- home planet horizon -->
-    <circle cx="600" cy="1360" r="972" style="fill:#5fb3ff;opacity:.18"/>
-    <circle cx="600" cy="1360" r="960" fill="url(#world)"/>
-    <g clip-path="url(#worldclip)" style="fill:#2c7bbf;opacity:.75">
-      <path d="M180 470 C240 430 340 440 380 470 C420 500 300 520 180 470Z"/>
-      <path d="M720 420 C800 400 900 420 940 450 C900 480 780 470 720 420Z"/>
-      <path d="M1040 470 C1080 450 1160 460 1200 480 L1040 480Z"/>
-    </g>
-    <path d="M-360 1360 A960 960 0 0 1 1560 1360" style="fill:none;stroke:#bfe8ff;stroke-width:2;opacity:.55"/>
-
-    <!-- launch trail -->
-    <path class="launch-trail" d="M520 430 C600 330 660 240 770 178" style="fill:none;stroke:#ffd98a;stroke-width:2.5;stroke-dasharray:2 10;stroke-linecap:round;opacity:.7"/>
 
     <!-- spaceship -->
     <g class="shipwrap" transform="translate(760 100) rotate(-14)">
