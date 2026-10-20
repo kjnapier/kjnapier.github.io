@@ -1,159 +1,764 @@
-<!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Kevin Napier</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Kevin Napier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;1,500&family=Chakra+Petch:wght@500;600;700&family=Nunito:wght@400;600;800&display=swap">
+<style>
+/* Layout: deep space seen through a visor. Starfield hero with a small ship leaving a green planet, then chamfered HUD panels with scanlines. Cyan visor accents, warm ship colors. One dark look. */
+:root {
+  --space: #060a1c;
+  --space-2: #131b44;
+  --bg: #080d22;
+  --paper: rgba(20, 28, 62, .82);
+  --paper-solid: #141c3e;
+  --edge: #2b3770;
+  --ink: #eef0ff;
+  --muted: #a6acd4;
+  --leaf: #8fd164;
+  --leaf-soft: #18223f;
+  --soil: #050816;
+  --gold: #f2c04a;
+  --bloom: #ffc93c;
+  --hull: #e2523a;
+  --hull-dark: #9a2a1b;
+  --hull-light: #ece7dc;
+  --glass: #9be6ff;
+  --link: #8cc8ff;
+  --todo: #4a3d12;
+  --todo-ink: #ffe08a;
+  --hud: #5ee1ff;
+  --hud-dim: rgba(94, 225, 255, .32);
+  --hud-faint: rgba(94, 225, 255, .08);
+  --display: "Chakra Petch", "Bahnschrift", "Segoe UI", system-ui, sans-serif;
+  --serif: "Alegreya", "Palatino Linotype", Palatino, Georgia, serif;
+  --body: "Nunito", "Trebuchet MS", system-ui, sans-serif;
+  color-scheme: dark;
+}
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+* { box-sizing: border-box; }
+body {
+  background-color: var(--bg); color: var(--ink); font: 400 1.05rem/1.65 var(--body);
+  background-image:
+    radial-gradient(1px 1px at 23px 41px, rgba(255,255,255,.7), transparent 60%),
+    radial-gradient(1px 1px at 141px 97px, rgba(255,255,255,.5), transparent 60%),
+    radial-gradient(1.5px 1.5px at 87px 173px, rgba(255,255,255,.6), transparent 60%),
+    radial-gradient(1px 1px at 201px 13px, rgba(200,210,255,.6), transparent 60%),
+    radial-gradient(1px 1px at 251px 211px, rgba(255,255,255,.4), transparent 60%);
+  background-size: 280px 240px;
+}
+a { color: var(--link); text-underline-offset: 3px; font-weight: 600; }
+:focus-visible { outline: 2px solid var(--hud); outline-offset: 3px; border-radius: 6px; }
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.todo { background: var(--todo); color: var(--todo-ink); border-radius: 3px; padding: 0 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Kevin Napier</span>
-								</a>
+/* Hero: the garden */
+.hero { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--space) 0%, var(--space-2) 70%, #1d2a5c 100%); }
+.hero-inner { position: relative; z-index: 2; max-width: 980px; margin: 0 auto; padding-block: 56px 190px; display: grid; gap: 12px; }
+.readout { font: 600 0.74rem/1 var(--display); letter-spacing: 0.18em; text-transform: uppercase; color: var(--hud); display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 6px; }
+.readout span::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--hud); margin-right: 8px; vertical-align: 1px; }
+.readout a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hud-dim); }
+.readout a:hover { color: var(--hud); border-color: var(--hud); }
+.hero h1 {
+  position: relative; justify-self: start; isolation: isolate;
+  font: 700 clamp(2.5rem, 8vw, 4.8rem)/0.95 var(--display); text-transform: uppercase; letter-spacing: 0.1em; margin: 0;
+  color: #fff; background: linear-gradient(180deg, #ffffff 0%, #e4f9ff 48%, #5ee1ff 52%, #b8f1ff 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(94,225,255,.4));
+}
+.hero h1::before, .hero h1::after {
+  content: attr(data-text); position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  -webkit-text-fill-color: currentColor; background: none;
+}
+.hero h1::before { color: rgba(94,225,255,.45); transform: translate(3px, 0); }
+.hero h1::after { color: rgba(255,82,96,.4); transform: translate(-3px, 0); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1::before { animation: glitch 6s steps(1) infinite; }
+  .hero h1::after { animation: glitch 6s steps(1) infinite reverse; }
+  @keyframes glitch { 0%, 100% { transform: translate(3px, 0); } 91% { transform: translate(7px, -2px); } 93% { transform: translate(-2px, 2px); } 95% { transform: translate(3px, 0); } }
+}
+.namebar { display: flex; align-items: center; gap: 10px; width: min(100%, 36rem); font: 600 0.62rem/1 var(--display); letter-spacing: 0.22em; text-transform: uppercase; color: var(--hud); }
+.namebar i { flex: 1; height: 6px; background: linear-gradient(var(--hud), var(--hud)) left center / 100% 1px no-repeat, repeating-linear-gradient(90deg, var(--hud) 0 1px, transparent 1px 12px); opacity: .7; }
+.namebar b { width: 8px; height: 8px; background: var(--hud); transform: rotate(45deg); }
+.idplate {
+  justify-self: start; max-width: 100%; margin: 6px 0 0; display: flex; flex-wrap: wrap; align-items: stretch;
+  background: linear-gradient(90deg, rgba(94,225,255,.14), rgba(6,10,28,.78) 40%), rgba(6,10,28,.78);
+  border: 1px solid var(--hud-dim); border-left: 4px solid var(--hud);
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+.idplate div { display: grid; gap: 4px; padding: 10px 18px 11px; min-width: 0; }
+.idplate > div + div { border-left: 1px solid var(--hud-dim); }
+.idplate .station { display: flex; align-items: center; gap: 12px; }
+.idplate .station > div { padding: 0; }
+#sun { width: 48px; height: 48px; flex: none; image-rendering: pixelated; filter: drop-shadow(0 0 6px rgba(255,201,60,.5)); }
+.idplate dt { font: 600 0.62rem/1 var(--display); letter-spacing: 0.22em; text-transform: uppercase; color: var(--hud); }
+.idplate dd { margin: 0; font: 700 1rem/1.25 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
+@media (max-width: 520px) { .idplate > div + div { border-left: 0; border-top: 1px solid var(--hud-dim); } .idplate > div { flex: 1 1 100%; } }
+.hero nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.hero nav a {
+  font: 600 0.85rem/1 var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none;
+  background: linear-gradient(var(--hud-faint), var(--hud-faint)), var(--paper-solid);
+  padding: 12px 18px; border: 1px solid var(--hud-dim);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+.hero nav a:hover { transform: translateY(-2px); border-color: var(--hud); color: var(--hud); }
+.scene { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.star { fill: #fff; }
+@media (prefers-reduced-motion: no-preference) {
+  .ship { animation: bob 5s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(-12px) rotate(-2deg); } }
+  .flame { animation: flicker .25s steps(2) infinite; transform-box: fill-box; transform-origin: right center; }
+  @keyframes flicker { 50% { transform: scaleX(.75); } }
+  .twinkle { animation: twinkle 3s ease-in-out infinite; }
+  .twinkle:nth-child(3n) { animation-delay: -1s; } .twinkle:nth-child(3n+1) { animation-delay: -2s; }
+  @keyframes twinkle { 50% { opacity: .25; } }
+  .hero nav a { transition: transform .12s, box-shadow .12s; }
+}
 
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
+/* Phone layout for the hero scene: bring the ship into the narrow visible strip */
+@media (max-width: 640px) {
+  .shipwrap { transform: translate(545px, 318px) rotate(-12deg) scale(.6); }
+  .launch-trail { display: none; }
+  .hero-inner { padding-block-end: 280px; }
+}
 
-						</div>
-					</header>
+/* Panels */
+.journal { max-width: 980px; margin: -70px auto 0; position: relative; z-index: 3; padding-block: 0 56px; display: grid; gap: 26px; }
+.page { position: relative; background: var(--paper); border: 1px solid var(--hud-dim); clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px); padding: 28px clamp(18px, 4vw, 40px) 32px; box-shadow: 0 18px 40px rgba(0,0,0,.35); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); min-width: 0; }
+.page::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  --c: linear-gradient(var(--hud), var(--hud));
+  background: var(--c) top 0 right 0 / 26px 2px no-repeat, var(--c) top 0 right 0 / 2px 26px no-repeat,
+              var(--c) bottom 0 left 0 / 26px 2px no-repeat, var(--c) bottom 0 left 0 / 2px 26px no-repeat;
+}
+.page::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(94,225,255,.035) 0 1px, transparent 1px 4px); }
+.page > * { position: relative; z-index: 1; }
+.page h2 { font: 700 1.5rem/1.2 var(--display); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 2px; display: flex; align-items: center; gap: 12px; }
+.page h2 svg { width: 28px; height: 28px; flex: none; }
+.page .kicker { font: 600 0.74rem/1.4 var(--display); letter-spacing: 0.16em; text-transform: uppercase; color: var(--hud); margin: 0 0 22px; }
+.lede { font: 500 1.45rem/1.45 var(--serif); margin: 0 0 12px; max-width: 38ch; text-wrap: balance; }
+.prose { margin: 0; max-width: 64ch; }
 
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">portfolio</a></li>
-							<li><a href="whoami.html">whoami</a></li>
-							<li><a href="generic.html">cv</a></li>
-							<li><a href="elements.html">elements</a></li>
-						</ul>
-					</nav>
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+.chips li { font: 600 0.8rem/1 var(--body); background: var(--paper-solid); color: var(--ink); border-radius: 999px; padding: 6px 10px; }
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<header>
-								<h1>what i do:</h1>
-							</header>
+/* Inventory */
+.inv { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 760px) { .inv { grid-template-columns: minmax(0, 1fr); } }
+.slots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; background: var(--soil); padding: 14px; border-radius: 20px; box-shadow: inset 0 2px 12px rgba(0,0,0,.4); }
+.slot {
+  position: relative; aspect-ratio: 1 / 1; max-width: 100%; padding: 12%; border-radius: 50%; cursor: pointer;
+  background: radial-gradient(circle at 50% 38%, rgba(255,255,255,.2), rgba(255,255,255,.05) 70%);
+  border: 2px solid rgba(255,255,255,.22); display: grid; place-items: center; font: inherit; color: #fff;
+}
+.slot svg { width: 100%; height: 100%; }
+.slot:hover:not(:disabled) { transform: scale(1.05); border-color: rgba(255,255,255,.6); }
+.slot.empty { cursor: default; background: rgba(255,255,255,.04); border-style: dashed; border-color: rgba(255,255,255,.14); }
+.slot[aria-pressed="true"] { border-color: var(--gold); background: radial-gradient(circle at 50% 38%, rgba(255,220,120,.45), rgba(255,200,80,.1) 72%); }
+.slot[aria-pressed="true"]::before {
+  content: ""; position: absolute; inset: -7px; pointer-events: none;
+  --b: linear-gradient(var(--gold), var(--gold));
+  background:
+    var(--b) top left / 14px 3px no-repeat, var(--b) top left / 3px 14px no-repeat,
+    var(--b) top right / 14px 3px no-repeat, var(--b) top right / 3px 14px no-repeat,
+    var(--b) bottom left / 14px 3px no-repeat, var(--b) bottom left / 3px 14px no-repeat,
+    var(--b) bottom right / 14px 3px no-repeat, var(--b) bottom right / 3px 14px no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .slot { transition: transform .12s, border-color .12s; }
+  .slot[aria-pressed="true"]::before { animation: cursor 1.2s ease-in-out infinite; }
+  @keyframes cursor { 50% { inset: -3px; } }
+}
+.badge { position: absolute; bottom: -4px; right: -4px; font: 800 0.65rem/1 var(--body); text-transform: uppercase; letter-spacing: .06em; background: var(--leaf); color: #10200c; padding: 4px 6px; border-radius: 999px; }
+.detail { background: var(--leaf-soft); border: 1px solid var(--hud-dim); clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); padding: 20px 22px 22px; display: grid; gap: 8px; min-width: 0; }
+.detail .year { font: 600 0.76rem/1 var(--display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--leaf); }
+.scan { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 10px; font: 600 0.7rem/1 var(--display); letter-spacing: 0.16em; text-transform: uppercase; color: var(--hud); margin-bottom: 4px; }
+.scan i { height: 4px; background: var(--hud-faint); position: relative; overflow: hidden; }
+.scan i::after { content: ""; position: absolute; inset: 0; background: var(--hud); transform-origin: left; }
+@media (prefers-reduced-motion: no-preference) { .scan.run i::after { animation: scanfill .7s ease-out; } @keyframes scanfill { from { transform: scaleX(0); } } }
+.detail h3 { font: 700 1.35rem/1.2 var(--display); letter-spacing: 0.02em; margin: 0; text-wrap: balance; }
+.detail .sub { margin: 2px 0 4px; padding: 6px 10px; font: 600 0.92rem/1.4 var(--body); color: var(--ink); background: var(--hud-faint); border-left: 2px solid var(--hud); }
+.detail.fire .sub { background: rgba(255,106,26,.1); border-left-color: #ff6a1a; }
+.detail p { margin: 0; }
 
-							<section class="tiles">
+/* SAURON */
+#d-desc .acro { margin-top: 10px; font: 600 0.8rem/1.4 var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+#d-desc .acro b { color: #ff9a3c; font-weight: 700; }
+.detail.fire { border-color: rgba(255,106,26,.6); background: radial-gradient(120% 90% at 50% 0%, rgba(255,90,20,.22), transparent 60%), var(--leaf-soft); }
+.detail.fire h3 { font-size: 2rem; letter-spacing: 0.32em; background: linear-gradient(180deg, #fff3b0, #ffb02e 45%, #ff5a1a 75%, #b3180a); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 10px rgba(255,90,20,.55)); }
+.detail.fire .year, .detail.fire .scan { color: #ff9a3c; }
+.detail.fire .scan i::after { background: #ff6a1a; }
+.slot[data-item="roman"] svg { filter: drop-shadow(0 0 6px rgba(255,90,20,.6)); }
+@media (prefers-reduced-motion: no-preference) {
+  .slot[data-item="roman"] .flames { animation: burn 1.4s ease-in-out infinite alternate; transform-origin: 32px 32px; }
+  @keyframes burn { to { transform: scale(1.06); opacity: .6; } }
+}
 
-								<article class="style1">
-									<span class="image">
-										<img src="images/jerry.jpeg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>spacerocks</h2>
-										<div class="content">
-											<p>Software for celestial mechanics.</p>
-										</div>
-									</a>
-								</article>
+/* Shift-and-stack demo */
+.demo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 1.1fr); gap: 20px; margin-top: 22px; align-items: start; }
+@media (max-width: 760px) { .demo { grid-template-columns: repeat(2, minmax(0, 1fr)); } .demo .controls { grid-column: 1 / -1; } }
+.demo figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
+.demo canvas { width: 100%; max-width: 100%; aspect-ratio: 1 / 1; image-rendering: pixelated; border: 1px solid var(--hud-dim); background: var(--soil); }
+.demo figcaption { font: 600 0.72rem/1.3 var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
+.controls { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.controls label { font: 600 0.74rem/1 var(--display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--hud); }
+.controls input[type=range] { width: 100%; accent-color: var(--hud); }
+.ratebox { font: 600 1.05rem/1 var(--display); font-variant-numeric: tabular-nums; }
+.status { margin: 0; font: 700 0.9rem/1 var(--display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 10px 12px; border: 1px solid var(--hud-faint); }
+.status.hit { color: #10200c; background: var(--leaf); border-color: var(--leaf); }
+.hint { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Consulting</h2>
-										<div class="content">
-											<p>wouldn't you like to know initiatives</p>
-										</div>
-									</a>
-								</article>
+/* Inventory rows */
+.slots { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; gap: 14px !important; }
+.invrow { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); gap: 10px; align-items: center; }
+.rowlabel { font: 600 0.66rem/1.2 var(--display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--hud); }
+.rowslots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 15rem; }
+@media (max-width: 400px) { .invrow { grid-template-columns: minmax(0, 1fr); } }
+.papers { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 10px; }
+.papers li { display: grid; gap: 2px; padding-left: 12px; border-left: 2px solid var(--hud-dim); }
+.papers a { font-weight: 700; }
+.papers span { font-size: 0.85rem; color: var(--muted); }
+.detail .more { margin-top: 10px; }
+#d-desc p { margin: 0; }
 
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Solar System Objects</h2>
-										<div class="content">
-											<p>discovering minor planets.</p>
-										</div>
-									</a>
-								</article>
+/* Experience */
+.trail { list-style: none; margin: 0; padding: 0; display: grid; }
+.trail li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 4px 16px; align-items: baseline; padding-block: 14px; border-bottom: 1px solid var(--hud-faint); }
+.trail li:last-child { border-bottom: 0; }
+.trail .dot { width: 10px; height: 10px; transform: rotate(45deg); background: var(--hud-dim); align-self: center; justify-self: center; }
+.trail li.now .dot { background: var(--leaf); box-shadow: 0 0 0 4px var(--leaf-soft); }
+.trail strong { font: 600 1.08rem/1.3 var(--display); letter-spacing: 0.02em; }
+.trail .org { color: var(--muted); }
+.trail .when { color: var(--hud); font: 600 0.85rem/1.4 var(--display); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 520px) { .trail li { grid-template-columns: 22px minmax(0, 1fr); } .trail .when { grid-column: 2; } }
 
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Tempus</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
+/* Contact */
+.contact { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.addr { font: 800 1.08rem/1.3 var(--body); user-select: all; background: var(--bg); border: 1px solid var(--hud-faint); padding: 10px 14px; min-width: 0; overflow-wrap: anywhere; }
+.copy {
+  font: 600 0.85rem/1 var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: #fff; background: var(--hull); border: 0; border-radius: 0;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  padding: 12px 18px; cursor: pointer; box-shadow: 0 3px 0 var(--hull-dark);
+}
+.copy:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--hull-dark); }
+.links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; }
 
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Aliquam</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
+footer { text-align: center; font: 600 0.72rem/1.6 var(--display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-block: 0 40px; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <svg class="scene" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="neb1"><stop offset="0" stop-color="#6b4bc9" stop-opacity=".45"/><stop offset="1" stop-color="#6b4bc9" stop-opacity="0"/></radialGradient>
+      <radialGradient id="neb2"><stop offset="0" stop-color="#2fb3c9" stop-opacity=".3"/><stop offset="1" stop-color="#2fb3c9" stop-opacity="0"/></radialGradient>
+      <radialGradient id="world" cx=".42" cy=".08" r=".7"><stop offset="0" stop-color="#7fd06a"/><stop offset=".35" stop-color="#3f9a55"/><stop offset="1" stop-color="#12382c"/></radialGradient>
+      <radialGradient id="ringed" cx=".35" cy=".35"><stop offset="0" stop-color="#f3c98a"/><stop offset="1" stop-color="#a8683a"/></radialGradient>
+      <radialGradient id="moon" cx=".35" cy=".35"><stop offset="0" stop-color="#e6e8f2"/><stop offset="1" stop-color="#8a8fa6"/></radialGradient>
+      <clipPath id="worldclip"><circle cx="600" cy="1360" r="960"/></clipPath>
+    </defs>
+    <ellipse cx="260" cy="140" rx="380" ry="200" fill="url(#neb1)"/>
+    <ellipse cx="980" cy="260" rx="360" ry="180" fill="url(#neb2)"/>
+    <g id="stars"></g>
 
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic06.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Veroeros</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
+    <!-- ringed planet -->
+    <g transform="translate(1040 92)">
+      <ellipse rx="64" ry="14" transform="rotate(-18)" style="fill:none;stroke:#e8c48f;stroke-width:5;opacity:.55"/>
+      <circle r="32" fill="url(#ringed)"/>
+      <path d="M-62 6 A64 14 -18 0 0 58 -26" transform="rotate(0)" style="fill:none;stroke:#e8c48f;stroke-width:5;opacity:.9"/>
+    </g>
+    <!-- moon -->
+    <g transform="translate(150 230)">
+      <circle r="18" fill="url(#moon)"/>
+      <circle cx="-5" cy="-4" r="4" style="fill:#7d8299;opacity:.5"/><circle cx="6" cy="6" r="3" style="fill:#7d8299;opacity:.5"/>
+    </g>
 
-							</section>
-						</div>
-					</div>
+    <!-- home planet horizon -->
+    <circle cx="600" cy="1360" r="972" style="fill:#5fb3ff;opacity:.18"/>
+    <circle cx="600" cy="1360" r="960" fill="url(#world)"/>
+    <g clip-path="url(#worldclip)" style="fill:#2c7bbf;opacity:.75">
+      <path d="M180 470 C240 430 340 440 380 470 C420 500 300 520 180 470Z"/>
+      <path d="M720 420 C800 400 900 420 940 450 C900 480 780 470 720 420Z"/>
+      <path d="M1040 470 C1080 450 1160 460 1200 480 L1040 480Z"/>
+    </g>
+    <path d="M-360 1360 A960 960 0 0 1 1560 1360" style="fill:none;stroke:#bfe8ff;stroke-width:2;opacity:.55"/>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</footer>
+    <!-- launch trail -->
+    <path class="launch-trail" d="M520 430 C600 330 660 240 770 178" style="fill:none;stroke:#ffd98a;stroke-width:2.5;stroke-dasharray:2 10;stroke-linecap:round;opacity:.7"/>
 
-			</div>
+    <!-- spaceship -->
+    <g class="shipwrap" transform="translate(760 100) rotate(-14)">
+      <g class="ship">
+        <path class="flame" d="M-6 46 Q-44 38 -60 46 Q-44 54 -6 50Z" style="fill:var(--bloom)"/>
+        <path class="flame" d="M-6 47 Q-28 43 -38 47 Q-28 51 -6 49Z" style="fill:#fff"/>
+        <path d="M14 20 L-6 0 L6 0 L34 22Z" style="fill:var(--hull-dark)"/>
+        <path d="M0 48 C0 22 40 14 92 22 C134 28 150 44 150 52 C150 62 128 72 92 74 C44 76 0 70 0 48Z" style="fill:var(--hull)"/>
+        <path d="M6 56 C30 70 92 74 146 58 C140 66 124 72 92 74 C44 76 10 70 6 56Z" style="fill:var(--hull-light)"/>
+        <path d="M30 70 L22 92 M110 72 L118 92" style="stroke:var(--hull-dark);stroke-width:4;stroke-linecap:round"/>
+        <path d="M16 92h14M110 92h14" style="stroke:var(--hull-dark);stroke-width:4;stroke-linecap:round"/>
+        <circle cx="104" cy="44" r="15" style="fill:var(--hull-light)"/>
+        <circle cx="104" cy="44" r="11" style="fill:var(--glass)"/>
+        <path d="M98 38 a8 8 0 0 1 9 -3" style="stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round"/>
+        <path d="M70 22 L66 4" style="stroke:var(--hull-dark);stroke-width:3;stroke-linecap:round"/>
+        <circle cx="66" cy="3" r="5" style="fill:var(--bloom)"/>
+        <circle cx="66" cy="3" r="11" style="fill:var(--bloom);opacity:.25"/>
+        <circle cx="40" cy="48" r="4" style="fill:var(--hull-dark)"/><circle cx="58" cy="44" r="4" style="fill:var(--hull-dark)"/>
+      </g>
+    </g>
+    <rect x="0" y="470" width="1200" height="10" style="fill:var(--bg);opacity:0"/>
+  </svg>
+  <div class="hero-inner gutter">
+    <h1 data-text="Kevin Napier">Kevin Napier</h1>
+    <div class="namebar" aria-hidden="true"><b></b><i></i><span>ID verified</span></div>
+    <dl class="idplate">
+      <div><dt>Designation</dt><dd>Astronomer</dd></div>
+      <div class="station"><canvas id="sun" width="24" height="24" aria-hidden="true"></canvas><div><dt>Station</dt><dd>Center for Astrophysics | Harvard &amp; Smithsonian</dd></div></div>
+    </dl>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#work">Research</a>
+      <a href="#method">Shift and stack</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+<main class="journal gutter">
+  <section class="page" id="about">
+    <h2><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7" style="fill:var(--leaf)"/><ellipse cx="12" cy="12" rx="11" ry="3.5" transform="rotate(-20 12 12)" style="fill:none;stroke:var(--gold);stroke-width:1.6"/></svg>About</h2>
+    <p class="kicker">Log entry · pilot profile</p>
+    <p class="lede">I find the faintest worlds beyond Neptune.</p>
+    <p class="prose">Most of my work is discovering trans-Neptunian objects in data from space telescopes, using shift-and-stack searches to pull out objects far fainter than any single image can show. I also study the solar system with large ground-based telescopes, write the software that makes these searches possible, and do some theory on how the outer solar system came to look the way it does.</p>
+  </section>
 
-	</body>
+  <section class="page" id="work">
+    <h2><svg viewBox="0 0 24 24" aria-hidden="true"><g style="fill:none;stroke:var(--hud);stroke-width:1.6"><circle cx="7" cy="7" r="4"/><circle cx="17" cy="7" r="4"/><circle cx="7" cy="17" r="4"/></g><circle cx="17" cy="17" r="4" style="fill:var(--gold)"/></svg>Research</h2>
+    <p class="kicker">Observatories, tools and theory · select one to scan it</p>
+    <div class="inv">
+      <div class="slots" role="group" aria-label="Research areas">
+        <div class="invrow"><span class="rowlabel">Space</span><div class="rowslots">
+        <button type="button" class="slot" data-item="hst" aria-pressed="true" aria-label="Hubble Space Telescope">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g transform="translate(32 32) rotate(-32) scale(.8)">
+              <path d="M-6 -9 V-12 M-6 9 V12" style="stroke:#9aa0ab;stroke-width:2"/>
+              <rect x="-15" y="-33" width="18" height="21" style="fill:#1f3f8a;stroke:#8fa3c8;stroke-width:.8"/>
+              <path d="M-15 -26 H3 M-15 -19 H3 M-9 -33 V-12 M-3 -33 V-12" style="stroke:#8fa3c8;stroke-width:.5;opacity:.7"/>
+              <rect x="-15" y="12" width="18" height="21" style="fill:#1f3f8a;stroke:#8fa3c8;stroke-width:.8"/>
+              <path d="M-15 19 H3 M-15 26 H3 M-9 12 V33 M-3 12 V33" style="stroke:#8fa3c8;stroke-width:.5;opacity:.7"/>
+              <rect x="-27" y="-9" width="22" height="18" rx="2" style="fill:#aeb4bf"/>
+              <path d="M-21 -9 V9 M-14 -9 V9" style="stroke:#8a909c;stroke-width:.8"/>
+              <rect x="-6" y="-7.5" width="30" height="15" style="fill:#e3e6ec"/>
+              <path d="M2 -7.5 V7.5 M10 -7.5 V7.5 M18 -7.5 V7.5" style="stroke:#b9bec8;stroke-width:.8"/>
+              <ellipse cx="24" cy="0" rx="2.4" ry="7.5" style="fill:#2b2f3a"/>
+              <path d="M24 -7.5 L33 -15" style="stroke:#e3e6ec;stroke-width:2.6;stroke-linecap:round"/>
+              <path d="M-12 -9 L-14 -14 M-12 9 L-14 14" style="stroke:#9aa0ab;stroke-width:1.2"/>
+              <circle cx="-14" cy="-15" r="2.4" style="fill:#d0d4dc"/><circle cx="-14" cy="15" r="2.4" style="fill:#d0d4dc"/>
+            </g>
+          </svg>
+        </button>
+        <button type="button" class="slot" data-item="jwst" aria-pressed="false" aria-label="James Webb Space Telescope">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M2 50 32 41 62 50 32 60Z" style="fill:#b99ad6"/>
+            <path d="M6 52 32 45 58 52 32 58Z" style="fill:#d9c6ea;opacity:.7"/>
+            <g style="fill:#e8a417;stroke:#8a5f0a;stroke-width:.5">
+              <path d="M22.15 18.86 L20.02 22.54 L15.77 22.54 L13.65 18.86 L15.77 15.18 L20.02 15.18Z"/>
+              <path d="M22.15 27.00 L20.02 30.68 L15.77 30.68 L13.65 27.00 L15.77 23.32 L20.02 23.32Z"/>
+              <path d="M22.15 35.14 L20.02 38.82 L15.77 38.82 L13.65 35.14 L15.77 31.46 L20.02 31.46Z"/>
+              <path d="M29.20 14.79 L27.07 18.47 L22.82 18.47 L20.70 14.79 L22.82 11.11 L27.07 11.11Z"/>
+              <path d="M29.20 22.93 L27.07 26.61 L22.82 26.61 L20.70 22.93 L22.82 19.25 L27.07 19.25Z"/>
+              <path d="M29.20 31.07 L27.07 34.75 L22.82 34.75 L20.70 31.07 L22.82 27.39 L27.07 27.39Z"/>
+              <path d="M29.20 39.21 L27.07 42.89 L22.82 42.89 L20.70 39.21 L22.82 35.53 L27.07 35.53Z"/>
+              <path d="M36.25 10.72 L34.12 14.40 L29.88 14.40 L27.75 10.72 L29.88 7.04 L34.12 7.04Z"/>
+              <path d="M36.25 18.86 L34.12 22.54 L29.88 22.54 L27.75 18.86 L29.88 15.18 L34.12 15.18Z"/>
+              <path d="M36.25 35.14 L34.12 38.82 L29.88 38.82 L27.75 35.14 L29.88 31.46 L34.12 31.46Z"/>
+              <path d="M36.25 43.28 L34.12 46.96 L29.88 46.96 L27.75 43.28 L29.88 39.60 L34.12 39.60Z"/>
+              <path d="M43.30 14.79 L41.17 18.47 L36.92 18.47 L34.80 14.79 L36.92 11.11 L41.17 11.11Z"/>
+              <path d="M43.30 22.93 L41.17 26.61 L36.92 26.61 L34.80 22.93 L36.92 19.25 L41.17 19.25Z"/>
+              <path d="M43.30 31.07 L41.17 34.75 L36.92 34.75 L34.80 31.07 L36.92 27.39 L41.17 27.39Z"/>
+              <path d="M43.30 39.21 L41.17 42.89 L36.92 42.89 L34.80 39.21 L36.92 35.53 L41.17 35.53Z"/>
+              <path d="M50.35 18.86 L48.23 22.54 L43.98 22.54 L41.85 18.86 L43.98 15.18 L48.23 15.18Z"/>
+              <path d="M50.35 27.00 L48.23 30.68 L43.98 30.68 L41.85 27.00 L43.98 23.32 L48.23 23.32Z"/>
+              <path d="M50.35 35.14 L48.23 38.82 L43.98 38.82 L41.85 35.14 L43.98 31.46 L48.23 31.46Z"/>
+            </g>
+            <path d="M32 27 L32 6 M17 36 L32 6 M47 36 L32 6" style="stroke:#3a3f4a;stroke-width:1.1;opacity:.85"/>
+            <circle cx="32" cy="6" r="2.2" style="fill:#e8a417;stroke:#8a5f0a;stroke-width:.5"/>
+          </svg>
+        </button>
+        <button type="button" class="slot" data-item="roman" aria-pressed="false" aria-label="SAURON, Roman Cycle 1 program 19019">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <defs>
+              <radialGradient id="fire" cx=".5" cy=".5" r=".55"><stop offset="0" stop-color="#fff3b0"/><stop offset=".3" stop-color="#ffb02e"/><stop offset=".65" stop-color="#ff5a1a"/><stop offset="1" stop-color="#8a0f05"/></radialGradient>
+            </defs>
+            <g class="flames" style="fill:#ff6a1a;opacity:.85">
+              <path d="M8 32 C4 26 6 20 2 16 C10 18 12 24 14 26Z"/><path d="M56 32 C60 26 58 20 62 16 C54 18 52 24 50 26Z"/>
+              <path d="M8 32 C4 38 6 44 2 48 C10 46 12 40 14 38Z"/><path d="M56 32 C60 38 58 44 62 48 C54 46 52 40 50 38Z"/>
+              <path d="M24 16 C22 10 26 6 24 2 C30 6 30 12 30 15Z" style="fill:#ffb02e"/><path d="M40 16 C42 10 38 6 40 2 C34 6 34 12 34 15Z" style="fill:#ffb02e"/>
+            </g>
+            <path d="M4 32 C14 14 50 14 60 32 C50 50 14 50 4 32Z" fill="url(#fire)"/>
+            <path d="M32 17 C27 24 27 40 32 47 C37 40 37 24 32 17Z" style="fill:#120200"/>
+          </svg>
+          <span class="badge">Soon</span>
+        </button>
+        </div></div>
+        <div class="invrow"><span class="rowlabel">Ground</span><div class="rowslots">
+        <button type="button" class="slot" data-item="decam" aria-pressed="false" aria-label="Dark Energy Camera">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="31" style="fill:#1a1d26;stroke:#9aa0ab;stroke-width:1.2"/>
+            <g style="fill:#3f6fb0">
+              <rect x="20.95" y="8.52" width="7.00" height="3.50"/>
+              <rect x="28.50" y="8.52" width="7.00" height="3.50"/>
+              <rect x="36.05" y="8.52" width="7.00" height="3.50"/>
+              <rect x="17.18" y="12.47" width="7.00" height="3.50"/>
+              <rect x="24.73" y="12.47" width="7.00" height="3.50"/>
+              <rect x="32.27" y="12.47" width="7.00" height="3.50"/>
+              <rect x="39.83" y="12.47" width="7.00" height="3.50"/>
+              <rect x="13.40" y="16.42" width="7.00" height="3.50"/>
+              <rect x="20.95" y="16.42" width="7.00" height="3.50"/>
+              <rect x="28.50" y="16.42" width="7.00" height="3.50"/>
+              <rect x="36.05" y="16.42" width="7.00" height="3.50"/>
+              <rect x="43.60" y="16.42" width="7.00" height="3.50"/>
+              <rect x="9.62" y="20.37" width="7.00" height="3.50"/>
+              <rect x="17.18" y="20.37" width="7.00" height="3.50"/>
+              <rect x="24.73" y="20.37" width="7.00" height="3.50"/>
+              <rect x="32.27" y="20.37" width="7.00" height="3.50"/>
+              <rect x="39.83" y="20.37" width="7.00" height="3.50"/>
+              <rect x="47.38" y="20.37" width="7.00" height="3.50"/>
+              <rect x="9.62" y="24.32" width="7.00" height="3.50"/>
+              <rect x="17.18" y="24.32" width="7.00" height="3.50"/>
+              <rect x="24.73" y="24.32" width="7.00" height="3.50"/>
+              <rect x="32.27" y="24.32" width="7.00" height="3.50"/>
+              <rect x="39.83" y="24.32" width="7.00" height="3.50" style="fill:#e8a417"/>
+              <rect x="47.38" y="24.32" width="7.00" height="3.50"/>
+              <rect x="5.85" y="28.27" width="7.00" height="3.50"/>
+              <rect x="13.40" y="28.27" width="7.00" height="3.50"/>
+              <rect x="20.95" y="28.27" width="7.00" height="3.50"/>
+              <rect x="28.50" y="28.27" width="7.00" height="3.50"/>
+              <rect x="36.05" y="28.27" width="7.00" height="3.50"/>
+              <rect x="43.60" y="28.27" width="7.00" height="3.50"/>
+              <rect x="51.15" y="28.27" width="7.00" height="3.50"/>
+              <rect x="5.85" y="32.22" width="7.00" height="3.50"/>
+              <rect x="13.40" y="32.22" width="7.00" height="3.50"/>
+              <rect x="20.95" y="32.22" width="7.00" height="3.50"/>
+              <rect x="28.50" y="32.22" width="7.00" height="3.50"/>
+              <rect x="36.05" y="32.22" width="7.00" height="3.50"/>
+              <rect x="43.60" y="32.22" width="7.00" height="3.50"/>
+              <rect x="51.15" y="32.22" width="7.00" height="3.50"/>
+              <rect x="9.62" y="36.17" width="7.00" height="3.50"/>
+              <rect x="17.18" y="36.17" width="7.00" height="3.50"/>
+              <rect x="24.73" y="36.17" width="7.00" height="3.50"/>
+              <rect x="32.27" y="36.17" width="7.00" height="3.50"/>
+              <rect x="39.83" y="36.17" width="7.00" height="3.50"/>
+              <rect x="47.38" y="36.17" width="7.00" height="3.50"/>
+              <rect x="9.62" y="40.12" width="7.00" height="3.50"/>
+              <rect x="17.18" y="40.12" width="7.00" height="3.50"/>
+              <rect x="24.73" y="40.12" width="7.00" height="3.50"/>
+              <rect x="32.27" y="40.12" width="7.00" height="3.50"/>
+              <rect x="39.83" y="40.12" width="7.00" height="3.50"/>
+              <rect x="47.38" y="40.12" width="7.00" height="3.50"/>
+              <rect x="13.40" y="44.08" width="7.00" height="3.50"/>
+              <rect x="20.95" y="44.08" width="7.00" height="3.50"/>
+              <rect x="28.50" y="44.08" width="7.00" height="3.50"/>
+              <rect x="36.05" y="44.08" width="7.00" height="3.50"/>
+              <rect x="43.60" y="44.08" width="7.00" height="3.50"/>
+              <rect x="17.18" y="48.03" width="7.00" height="3.50"/>
+              <rect x="24.73" y="48.03" width="7.00" height="3.50"/>
+              <rect x="32.27" y="48.03" width="7.00" height="3.50"/>
+              <rect x="39.83" y="48.03" width="7.00" height="3.50"/>
+              <rect x="20.95" y="51.98" width="7.00" height="3.50"/>
+              <rect x="28.50" y="51.98" width="7.00" height="3.50"/>
+              <rect x="36.05" y="51.98" width="7.00" height="3.50"/>
+              <rect x="11.70" y="9.10" width="3" height="3" style="fill:#7d8fb3"/>
+              <rect x="45.30" y="9.10" width="3" height="3" style="fill:#7d8fb3"/>
+              <rect x="11.70" y="49.90" width="3" height="3" style="fill:#7d8fb3"/>
+              <rect x="45.30" y="49.90" width="3" height="3" style="fill:#7d8fb3"/>
+              <rect x="4.90" y="22.50" width="3" height="3" style="fill:#7d8fb3"/>
+              <rect x="54.10" y="22.50" width="3" height="3" style="fill:#7d8fb3"/>
+              <rect x="4.90" y="36.50" width="3" height="3" style="fill:#7d8fb3"/>
+              <rect x="54.10" y="36.50" width="3" height="3" style="fill:#7d8fb3"/>
+            </g>
+          </svg>
+        </button>
+        <button type="button" class="slot" data-item="lsst" aria-pressed="false" aria-label="Rubin Observatory's Legacy Survey of Space and Time">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="14" cy="12" r="1.4" style="fill:#fff"/><circle cx="50" cy="8" r="1.2" style="fill:#fff"/><circle cx="40" cy="16" r="1" style="fill:#fff"/>
+            <path d="M2 58 22 36 32 42 44 30 62 58Z" style="fill:#6b5a46"/>
+            <rect x="22" y="30" width="22" height="14" style="fill:#e7e3d8"/>
+            <path d="M22 30 25 20H41L44 30Z" style="fill:#f4f1ea"/>
+            <rect x="31" y="20" width="4" height="10" style="fill:#2b2f3a"/>
+            <rect x="44" y="36" width="8" height="8" style="fill:#cfcac0"/>
+          </svg>
+        </button>
+        </div></div>
+        <div class="invrow"><span class="rowlabel">Software</span><div class="rowslots">
+        <button type="button" class="slot" data-item="heliostack" aria-pressed="false" aria-label="heliostack">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g style="fill:#18223f;stroke:#5ee1ff;stroke-width:1.4">
+              <path d="M10 40 32 52 54 40 32 28Z" style="opacity:.45"/>
+              <path d="M10 32 32 44 54 32 32 20Z" style="opacity:.7"/>
+              <path d="M10 24 32 36 54 24 32 12Z"/>
+            </g>
+            <path d="M18 26 C24 22 32 22 40 24" style="fill:none;stroke:#ffd98a;stroke-width:1.4;stroke-dasharray:2 3"/>
+            <circle cx="40" cy="24" r="3.2" style="fill:#fff"/>
+            <circle cx="40" cy="24" r="7" style="fill:#fff;opacity:.18"/>
+          </svg>
+        </button>
+        <button type="button" class="slot" data-item="spacerocks" aria-pressed="false" aria-label="spacerocks">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <ellipse cx="32" cy="32" rx="26" ry="11" transform="rotate(-24 32 32)" style="fill:none;stroke:#5ee1ff;stroke-width:1.4;opacity:.7"/>
+            <circle cx="32" cy="32" r="4" style="fill:#ffc93c"/>
+            <path d="M46 14 C52 12 57 17 55 23 C54 28 48 30 44 27 C40 25 40 16 46 14Z" style="fill:#8a7a66"/>
+            <circle cx="48" cy="19" r="1.8" style="fill:#5f5446"/><circle cx="51" cy="24" r="1.2" style="fill:#5f5446"/>
+          </svg>
+        </button>
+        </div></div>
+        <div class="invrow"><span class="rowlabel">Theory</span><div class="rowslots">
+        <button type="button" class="slot" data-item="theory" aria-pressed="false" aria-label="Theory blackboard">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="6" y="12" width="52" height="36" rx="2" style="fill:#8a5a2b"/>
+            <rect x="9" y="15" width="46" height="30" style="fill:#2f4a3a"/>
+            <text x="12" y="26" style="fill:#f2f2ea;font:italic 8px Georgia,serif">&#8711;&#178;&#934; = 4&#960;G&#961;</text>
+            <path d="M12 33q6-5 12 0t12 0 12 0" style="fill:none;stroke:#f2f2ea;stroke-width:1.4;stroke-linecap:round;opacity:.85"/>
+            <path d="M12 40h18M34 40h8" style="stroke:#f2f2ea;stroke-width:1.4;stroke-linecap:round;opacity:.6"/>
+            <path d="M18 48 14 58M46 48 50 58" style="stroke:#8a5a2b;stroke-width:3;stroke-linecap:round"/>
+            <rect x="40" y="44" width="8" height="2.5" rx="1" style="fill:#fff"/>
+          </svg>
+        </button>
+        </div></div>
+      </div>
+      <article class="detail" aria-live="polite">
+        <div class="scan" id="scan"><span>Scan complete</span><i></i></div>
+        <span class="year" id="d-when"></span>
+        <h3 id="d-name"></h3>
+        <p class="sub" id="d-sub"></p>
+        <div id="d-desc"></div>
+        <ul class="chips" id="d-tags"></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="page" id="method">
+    <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15 12 20 21 15 12 10Z" style="fill:none;stroke:var(--hud);stroke-width:1.6;opacity:.5"/><path d="M3 10 12 15 21 10 12 5Z" style="fill:none;stroke:var(--hud);stroke-width:1.6"/><circle cx="15" cy="9" r="1.8" style="fill:#fff"/></svg>Shift and stack</h2>
+    <p class="kicker">Primary technique · try it</p>
+    <p class="prose">The objects I look for are too faint to see in any single image. Shift-and-stack adds many exposures together after shifting each one along a guessed path across the sky. Guess wrong and the object smears into the noise. Guess right and its light piles up in one spot while the noise averages away. Drag the rate below until the hidden object appears.</p>
+    <div class="demo">
+      <figure>
+        <canvas id="frame" width="64" height="64" aria-label="One noisy exposure"></canvas>
+        <figcaption>Single exposure <span id="fnum">1</span> of 12</figcaption>
+      </figure>
+      <figure>
+        <canvas id="stack" width="64" height="64" aria-label="Stack of all twelve exposures at the chosen rate"></canvas>
+        <figcaption>Stack of 12 at the chosen rate</figcaption>
+      </figure>
+      <div class="controls">
+        <label for="rate">Rate of motion</label>
+        <input type="range" id="rate" min="0" max="5" step="0.05" value="0.6">
+        <div class="ratebox"><span id="rateval">0.60</span> px / exposure</div>
+        <p class="status" id="status">No detection</p>
+        <p class="hint">Real searches try millions of rates and directions, and orbits that curve over days.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="contact">
+    <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3Z" style="fill:var(--paper-solid);stroke:var(--link);stroke-width:2;stroke-linejoin:round"/><path d="M3 6l9 7 9-7" style="fill:none;stroke:var(--link);stroke-width:2;stroke-linejoin:round"/></svg>Contact</h2>
+    <p class="kicker">Open a channel</p>
+    <div class="contact">
+      <span class="addr" id="email">kevin.napier@sao.si.edu</span>
+      <button type="button" class="copy" id="copy">Copy email</button>
+    </div>
+    <div class="links">
+      <a href="https://github.com/kjnapier">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=6YkOAPIAAAAJ">Google Scholar</a>
+      <a href="https://github.com/kjnapier/spacerocks">spacerocks</a>
+    </div>
+  </section>
+</main>
+
+<footer class="gutter">Kevin Napier · Center for Astrophysics | Harvard &amp; Smithsonian</footer>
+
+<script>
+var P = function (href, text, meta) { return '<li><a href="' + href + '">' + text + '</a><span>' + meta + '</span></li>'; };
+var items = {
+  hst: {
+    when: 'Space · Hubble', name: 'Hubble Space Telescope',
+    sub: 'Decades of archival images, still hiding new worlds.',
+    desc: '<p>Running heliostack on archival Hubble imaging from 2003 recovered two known objects too faint for any single exposure and turned up two new discoveries, the first found in stacks spanning more than about a day.</p><ul class="papers">' + P('https://iopscience.iop.org/article/10.3847/PSJ/ae63b7', 'heliostack: A Novel Approach to Minor Planet Discovery', 'Napier et al. 2026, PSJ') + '</ul>',
+    tags: ['HST', 'Archival data', 'Discovery']
+  },
+  jwst: {
+    when: 'Space · Webb · upcoming', name: 'James Webb Space Telescope',
+    sub: 'Down to magnitude 30.5.',
+    desc: '<p>New, upcoming work: a JWST shift-and-stack search for trans-Neptunian objects that reaches magnitude 30.5, deeper than any solar system survey so far.</p>',
+    tags: ['JWST', 'Shift-and-stack', 'Upcoming']
+  },
+  roman: {
+    when: 'Roman · Cycle 1 · Program 19019 · PI', name: 'SAURON', fire: true,
+    sub: 'An unblinking eye on the outer solar system.',
+    desc: '<p>My Roman Cycle 1 program searches archival data from Roman\'s Galactic Bulge survey for faint trans-Neptunian objects, to test models of planetesimal formation and look for populations in the distant solar system that no one has detected yet.</p><p class="acro"><b>S</b>urvey of <b>A</b>rchival <b>U</b>ltra-deep <b>R</b>oman data for <b>O</b>bjects beyond <b>N</b>eptune</p>',
+    tags: ['Roman', 'Galactic Bulge survey', 'Shift-and-stack']
+  },
+  decam: {
+    when: 'Ground · Cerro Tololo', name: 'Dark Energy Camera',
+    sub: 'A 570-megapixel camera on the Blanco 4 m telescope.',
+    desc: '<p>DECam data from the Dark Energy Survey and the DECam Ecliptic Exploration Project (DEEP) found many distant TNOs, including the extreme objects behind my test of orbital clustering.</p><ul class="papers">' + P('https://iopscience.iop.org/article/10.3847/PSJ/abe53e', 'No Evidence for Orbital Clustering in the Extreme Trans-Neptunian Objects', 'Napier et al. 2021, PSJ') + '</ul>',
+    tags: ['DECam', 'DES', 'DEEP']
+  },
+  lsst: {
+    when: 'Ground · Cerro Pachón', name: 'Rubin Observatory LSST',
+    sub: 'A decade of imaging the whole southern sky every few nights.',
+    desc: '<p>I find solar system objects in LSST data with pointdexter, a search code for picking out moving objects across the survey\'s repeated visits.</p><ul class="papers">' + P('https://github.com/kjnapier/pointdexter', 'github.com/kjnapier/pointdexter', 'Solar system object search for LSST') + '</ul>',
+    tags: ['LSST', 'Rubin', 'pointdexter']
+  },
+  heliostack: {
+    when: 'Software · for my own searches', name: 'heliostack',
+    sub: 'Shift-and-stack along orbits, not straight lines.',
+    desc: '<p>A nonlinear shift-and-stack that follows curved, orbit-based paths across the sky. That lets one stack span days of data, so it can find objects that straight-line searches miss.</p><ul class="papers">' + P('https://iopscience.iop.org/article/10.3847/PSJ/ae63b7', 'heliostack: A Novel Approach to Minor Planet Discovery', 'Napier, Holman, Lin, Gerdes &amp; Ruch 2026, PSJ') + '</ul>',
+    tags: ['Shift-and-stack', 'Discovery']
+  },
+  spacerocks: {
+    when: 'Software · open source', name: 'spacerocks',
+    sub: 'The solar system at your fingertips.',
+    desc: '<p>Orbit propagation and solar system tools with a Rust core and Python bindings. I built it mostly for my own work, and anyone is welcome to use it.</p><ul class="papers">' + P('https://github.com/kjnapier/spacerocks', 'github.com/kjnapier/spacerocks', 'Rust · Python') + '</ul>',
+    tags: ['Rust', 'Python', 'Orbits']
+  },
+  theory: {
+    when: 'Theory', name: 'The blackboard',
+    sub: 'Dynamics of the outer solar system.',
+    desc: '<p>Theory work on what shapes the distant solar system, from apparent orbital clustering to interstellar objects captured by the Sun.</p><ul class="papers">'
+      + P('https://iopscience.iop.org/article/10.3847/PSJ/abe53e', 'No Evidence for Orbital Clustering in the Extreme Trans-Neptunian Objects', 'Napier et al. 2021, PSJ')
+      + P('https://arxiv.org/abs/2102.08488', 'On the Capture of Interstellar Objects by our Solar System', 'Napier, Adams &amp; Batygin 2021, PSJ')
+      + P('https://arxiv.org/abs/2109.11017', 'On the Fate of Interstellar Objects Captured by our Solar System', 'Napier, Adams &amp; Batygin 2021, PSJ')
+      + '</ul><p class="more"><a href="https://scholar.google.com/citations?user=6YkOAPIAAAAJ">Full list on Google Scholar</a></p>',
+    tags: ['Dynamics', 'Planet Nine', 'Interstellar objects']
+  }
+};
+var slots = document.querySelectorAll('.slot[data-item]');
+function show(key) {
+  var it = items[key];
+  document.getElementById('d-when').textContent = it.when;
+  document.getElementById('d-name').textContent = it.name;
+  document.querySelector('.detail').classList.toggle('fire', !!it.fire);
+  document.getElementById('d-sub').textContent = it.sub;
+  document.getElementById('d-desc').innerHTML = it.desc;
+  document.getElementById('d-tags').innerHTML = it.tags.map(function (t) { return '<li>' + t + '</li>'; }).join('');
+  slots.forEach(function (s) { s.setAttribute('aria-pressed', s.dataset.item === key ? 'true' : 'false'); });
+  var sc = document.getElementById('scan'); sc.classList.remove('run'); void sc.offsetWidth; sc.classList.add('run');
+}
+slots.forEach(function (s, i) {
+  s.addEventListener('click', function () {
+    show(s.dataset.item);
+    var d = document.querySelector('.detail'), r = d.getBoundingClientRect();
+    if (window.innerWidth <= 760 && (r.top > window.innerHeight * 0.6 || r.bottom < 0)) d.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  });
+  s.addEventListener('keydown', function (e) {
+    var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!d) return;
+    e.preventDefault();
+    var n = slots[(i + d + slots.length) % slots.length]; n.focus(); show(n.dataset.item);
+  });
+});
+show('hst');
+document.querySelectorAll('[data-open]').forEach(function (a) { a.addEventListener('click', function () { show(a.dataset.open); }); });
+
+// shift-and-stack demo
+(function () {
+  var N = 12, W = 64, TRUE_V = 2.35, DIRX = 0.92, DIRY = -0.39, X0 = 14, Y0 = 44, AMP = 1.15;
+  var seed = 42;
+  function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  function gauss() { var u = rnd() || 1e-9, v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  var frames = [];
+  for (var k = 0; k < N; k++) {
+    var f = new Float32Array(W * W);
+    for (var i = 0; i < f.length; i++) f[i] = gauss();
+    var cx = X0 + DIRX * TRUE_V * k, cy = Y0 + DIRY * TRUE_V * k;
+    for (var y = 0; y < W; y++) for (var x = 0; x < W; x++) {
+      var d2 = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+      f[y * W + x] += AMP * 2.2 * Math.exp(-d2 / (2 * 1.1 * 1.1));
+    }
+    frames.push(f);
+  }
+  function paint(canvas, data, lo, hi) {
+    var g = canvas.getContext('2d'), img = g.createImageData(W, W);
+    for (var i = 0; i < data.length; i++) {
+      var t = Math.max(0, Math.min(1, (data[i] - lo) / (hi - lo)));
+      img.data[i * 4] = 20 + 210 * t; img.data[i * 4 + 1] = 30 + 215 * t; img.data[i * 4 + 2] = 70 + 185 * t; img.data[i * 4 + 3] = 255;
+    }
+    g.putImageData(img, 0, 0);
+  }
+  var fc = document.getElementById('frame'), sc = document.getElementById('stack'), rate = document.getElementById('rate');
+  var rv = document.getElementById('rateval'), st = document.getElementById('status'), fn = document.getElementById('fnum');
+  function stack(v) {
+    var out = new Float32Array(W * W);
+    for (var k = 0; k < N; k++) {
+      var dx = Math.round(DIRX * v * k), dy = Math.round(DIRY * v * k), f = frames[k];
+      for (var y = 0; y < W; y++) {
+        var sy = y + dy; if (sy < 0 || sy >= W) continue;
+        for (var x = 0; x < W; x++) { var sx = x + dx; if (sx >= 0 && sx < W) out[y * W + x] += f[sy * W + sx]; }
+      }
+    }
+    for (var i = 0; i < out.length; i++) out[i] /= Math.sqrt(N);
+    return out;
+  }
+  function update() {
+    var v = parseFloat(rate.value);
+    rv.textContent = v.toFixed(2);
+    paint(sc, stack(v), -2.5, 6);
+    var hit = Math.abs(v - TRUE_V) < 0.2;
+    st.textContent = hit ? 'Object detected' : 'No detection';
+    st.classList.toggle('hit', hit);
+  }
+  rate.addEventListener('input', update);
+  update();
+  var k = 0;
+  function tick() { paint(fc, frames[k], -2.5, 4); fn.textContent = k + 1; k = (k + 1) % N; }
+  tick();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(tick, 450);
+})();
+
+// pixel sun
+(function () {
+  var c = document.getElementById('sun'); if (!c) return;
+  var g = c.getContext('2d');
+  var rows = [
+    '........................', '........................', '........#.......#.......', '........##.##..##.......',
+    '........##.##.##........', '.....#..##.#####..#.....', '......#########.##......', '..##..############......',
+    '...###.###############..', '....#################...', '.....#############......', '...##################...',
+    '...##################...', '......#############.....', '...#################....', '..###############.###...',
+    '......############..##..', '......##.#########......', '.....#..#####.##..#.....', '........##.##.##........',
+    '.......##..##.##........', '.......#.......#........', '........................', '........................'
+  ];
+  g.fillStyle = '#ffcd00';
+  rows.forEach(function (r, y) { for (var x = 0; x < r.length; x++) if (r[x] === '#') g.fillRect(x, y, 1, 1); });
+})();
+
+// starfield
+(function () {
+  var g = document.getElementById('stars'), seed = 7, ns = 'http://www.w3.org/2000/svg';
+  function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  for (var i = 0; i < 140; i++) {
+    var c = document.createElementNS(ns, 'circle');
+    c.setAttribute('cx', (rnd() * 1200).toFixed(1));
+    c.setAttribute('cy', (rnd() * 400).toFixed(1));
+    c.setAttribute('r', (rnd() * 1.4 + 0.4).toFixed(2));
+    c.setAttribute('class', 'star' + (rnd() < 0.3 ? ' twinkle' : ''));
+    c.style.opacity = (rnd() * 0.6 + 0.4).toFixed(2);
+    g.appendChild(c);
+  }
+})();
+
+document.getElementById('copy').addEventListener('click', function () {
+  var btn = this, text = document.getElementById('email').textContent;
+  function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy email'; }, 1600); }
+  function fallback() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var s = getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected');
+  }
+  try { navigator.clipboard.writeText(text).then(function () { done('Copied'); }, fallback); } catch (e) { fallback(); }
+});
+</script>
+</body>
 </html>
