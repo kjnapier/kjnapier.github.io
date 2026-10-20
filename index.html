@@ -282,9 +282,15 @@ footer { text-align: center; font: 600 0.72rem/1.6 var(--display); letter-spacin
 
     <!-- ringed planet -->
     <g transform="translate(1040 92)">
-      <ellipse rx="64" ry="14" transform="rotate(-18)" style="fill:none;stroke:#e8c48f;stroke-width:5;opacity:.55"/>
+      <g transform="rotate(-18)" style="fill:none;stroke:#e8c48f;opacity:.5">
+        <ellipse rx="60" ry="13" style="stroke-width:6"/>
+        <ellipse rx="70" ry="15.2" style="stroke-width:2.5"/>
+      </g>
       <circle r="32" fill="url(#ringed)"/>
-      <path d="M-62 6 A64 14 -18 0 0 58 -26" transform="rotate(0)" style="fill:none;stroke:#e8c48f;stroke-width:5;opacity:.9"/>
+      <g transform="rotate(-18)" style="fill:none;stroke:#e8c48f;opacity:.95">
+        <path d="M-60 0 A60 13 0 0 0 60 0" style="stroke-width:6"/>
+        <path d="M-70 0 A70 15.2 0 0 0 70 0" style="stroke-width:2.5;opacity:.7"/>
+      </g>
     </g>
     <!-- moon -->
     <g transform="translate(150 230)">
